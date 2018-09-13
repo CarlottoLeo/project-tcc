@@ -39,8 +39,6 @@ export class MapsPage {
   }
 
   loadmap() {
-
-
     this.map = leaflet.map("map").fitWorld();
     leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attributions: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -48,13 +46,6 @@ export class MapsPage {
     }).addTo(this.map);
 
     this.professionals.addTo(this.map)
-
-    this.UserService.list().subscribe(dados => {
-      console.log(dados)
-    })
-
-
-    let that = this
 
     this.map.locate({
       setView: true,
@@ -72,12 +63,6 @@ export class MapsPage {
 
       marker.bindPopup("<p>Tashi Delek.<p>Delhi</p>");
       leaflet.circle([e.latitude, e.longitude], {radius: 800}).addTo(this.map);
-
-      //window.setTimeout(that.updateProfessionals, 1000);
-
-
-
-
 
       markerGroup.addLayer(marker);
       this.map.addLayer(markerGroup);
@@ -99,8 +84,6 @@ export class MapsPage {
       popupAnchor: [-3, -76],
     });
 
-    console.log (this.UserService)
-
     this.UserService.list().subscribe(dados => {
       user = dados;
       this.professionals.clearLayers();
@@ -109,25 +92,13 @@ export class MapsPage {
 
         let markerProf: any = leaflet.marker([user[i].log, user[i].lat], {icon: profIcon})
         this.professionals.addLayer(markerProf)
-        //var newLocations = [user[i].nome, user[i].log, user[i].lat, user[i].id];
-        //locations.push(newLocations);
-        console.log(locations);
 
-
-
-        //window.setTimeout(this.updateProfessionals, 1000);
       }
 
       setTimeout( () => {
         this.updateProfessionals()
       }, this.timeout);
     })
-
-
-    /*    for (var i = 0; i < locations.length; i++) {
-    let markerProf: any = leaflet.marker([locations[i][1], locations[i][2]], {icon: profIcon})
-    this.map.addLayer(markerProf);
-  }*/
-
+    console.log("running...");
 }
 }

@@ -1,6 +1,13 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpModule } from '@angular/http';
+
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ContatosPage } from '../pages/contatos/contatos';
@@ -15,11 +22,10 @@ import { ServiOsPage } from '../pages/servi-os/servi-os';
 import { FiltrarBuscaPage } from '../pages/filtrar-busca/filtrar-busca';
 import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 import { ContatoPage } from '../pages/contato/contato';
-import { Geolocation } from '@ionic-native/geolocation';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpModule } from '@angular/http';
 import { UserService } from '../pages/buscar-profissional/user.service';
+import { LoginPage } from '../pages/login/login';
+import { DetalhesPage } from '../pages/detalhes/detalhes';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
@@ -36,12 +42,14 @@ import { UserService } from '../pages/buscar-profissional/user.service';
     ServiOsPage,
     FiltrarBuscaPage,
     TabsControllerPage,
-    ContatoPage
+    ContatoPage,
+    DetalhesPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,14 +66,16 @@ import { UserService } from '../pages/buscar-profissional/user.service';
     ServiOsPage,
     FiltrarBuscaPage,
     TabsControllerPage,
-    ContatoPage
+    ContatoPage,
+    DetalhesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
-    UserService
+    UserService,
+    AuthServiceProvider
   ]
 })
 export class AppModule {}

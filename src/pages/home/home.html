@@ -1,14 +1,27 @@
 <ion-header>
   <ion-navbar>
+    <ion-title>
+      Member Area
+    </ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      Home
-    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding id="page2">
+  <ion-list>
+  <ion-list-header>
+    Users
+  </ion-list-header>
+  <ion-item *ngFor="let user of users">{{ user.name }}</ion-item>
+</ion-list>
+
   <div class="home-img">
     <a style="display:block;" on-click="goToMinhaConta()">
       <img src="assets/img/OnL3yOzeSjKx8KcTbX76_user.png.jpg" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" />
@@ -21,12 +34,4 @@
     Fulano
   </h3>
   <div class="spacer" style="width:300px;height:40px;" id="home-spacer13"></div>
-  <button id="home-button15" ion-button color="positive" block icon-left class="home-search" on-click="goToBuscarProfissional()">
-    <ion-icon name="search"></ion-icon>
-    Buscar Profissional
-  </button>
-  <button id="home-button16" ion-button color="dark" block icon-left class="home-logout">
-    <ion-icon name="log-out"></ion-icon>
-    Sair do App
-  </button>
 </ion-content>

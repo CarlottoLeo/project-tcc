@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MinhaContaPage } from '../pages/minha-conta/minha-conta';
 import { MapsPage } from '../pages/buscar-profissional/buscar-profissional';
 import { FiltrarBuscaPage } from '../pages/filtrar-busca/filtrar-busca';
+import { LoginPage } from '../pages/login/login';
 import { ClassificacaoPage } from '../pages/classificacao/classificacao';
 import { ServiOsPage } from '../pages/servi-os/servi-os';
 import { ContatosPage } from '../pages/contatos/contatos';
@@ -12,15 +13,18 @@ import { ContatoPage } from '../pages/contato/contato';
 import { AjudaPage } from '../pages/ajuda/ajuda';
 import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
 import { SobrePage } from '../pages/sobre/sobre';
-import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 
+
+
+import { HomePage } from '../pages/home/home';
+import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-  rootPage:any = TabsControllerPage;
+  rootPage:any = 'LoginPage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
