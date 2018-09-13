@@ -13,9 +13,9 @@ import 'rxjs/add/operator/map';
 export class AuthServiceProvider {
 
   // Change to this http://ed43bb3b.ngrok.io/api/login
-  static readonly LOGIN_URL = 'http://contoh.dev/api/login';
+  static readonly LOGIN_URL = 'http://localhost:3000/login';
   // Change to this http://ed43bb3b.ngrok.io/api/register
-  static readonly REGISTER_URL = 'http://contoh.dev/api/register';
+  static readonly REGISTER_URL = 'http://localhost:3000/register';
   access: boolean;
   token: string;
 

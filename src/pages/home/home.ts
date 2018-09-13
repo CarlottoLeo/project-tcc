@@ -39,7 +39,7 @@ export class HomePage {
 
     let options = new RequestOptions({ headers: headers });
     // Change to this http://ed43bb3b.ngrok.io/api/users
-    let url = 'http://contoh.dev/api/users';
+    let url = 'http://localhost:3000/login';
     this.http.get(url, options).map(res => res.json()).subscribe(
       data => {
         this.users = data.data;

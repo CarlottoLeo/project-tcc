@@ -29,14 +29,14 @@ export class LoginPage {
     if(this.registerCredentials.email == 'admin' && this.registerCredentials.password == 'admin'){
       this.nav.setRoot(TabsControllerPage);
     }else{
-    this.showLoading()
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {
-        this.nav.setRoot(TabsControllerPage);
-      } else {
-        this.showError("These credentials do not match our records.");
-      }
-    },
+      this.showLoading()
+      this.auth.login(this.registerCredentials).subscribe(allowed => {
+        if (allowed) {
+          this.nav.setRoot(TabsControllerPage);
+        } else {
+          this.showError("These credentials do not match our records.");
+        }
+      },
       error => {
         this.showError(error);
       });
@@ -59,7 +59,7 @@ export class LoginPage {
       subTitle: text,
       buttons: ['OK']
     });
-    alert.present(prompt);
+    //alert.present(prompt);
   }
 
 

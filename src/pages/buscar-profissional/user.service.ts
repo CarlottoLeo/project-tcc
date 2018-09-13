@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class UserService {
 
-    url='http://localhost:3000/user'
+    url='http://localhost:3000/register'
 
     constructor(private http: Http) {
     }

@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { FiltrarBuscaPage } from '../filtrar-busca/filtrar-busca';
 import { IonicPage } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { UserService } from './user.service';;
+import { UserService } from './user.service';
 import leaflet from 'leaflet';
 
 // declare var google;
@@ -89,8 +89,7 @@ export class MapsPage {
       this.professionals.clearLayers();
       for (let i = 0; i < user.length; i++) {
 
-
-        let markerProf: any = leaflet.marker([user[i].log, user[i].lat], {icon: profIcon})
+        let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
         this.professionals.addLayer(markerProf)
 
       }
