@@ -23,6 +23,7 @@ export class AuthServiceProvider {
 
   // Login
   public login(credentials) {
+  console.log(credentials);
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials.");
     } else {

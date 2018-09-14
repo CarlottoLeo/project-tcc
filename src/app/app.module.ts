@@ -23,9 +23,9 @@ import { FiltrarBuscaPage } from '../pages/filtrar-busca/filtrar-busca';
 import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 import { ContatoPage } from '../pages/contato/contato';
 import { UserService } from '../pages/buscar-profissional/user.service';
-import { LoginPage } from '../pages/login/login';
 import { DetalhesPage } from '../pages/detalhes/detalhes';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { ProfessionalPage } from '../pages/professional/professional';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     FiltrarBuscaPage,
     TabsControllerPage,
     ContatoPage,
-    DetalhesPage
+    DetalhesPage,
+    ProfessionalPage
   ],
   imports: [
     BrowserModule,
@@ -67,7 +68,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     FiltrarBuscaPage,
     TabsControllerPage,
     ContatoPage,
-    DetalhesPage
+    DetalhesPage,
+    ProfessionalPage
   ],
   providers: [
     StatusBar,

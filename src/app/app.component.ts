@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MinhaContaPage } from '../pages/minha-conta/minha-conta';
 import { MapsPage } from '../pages/buscar-profissional/buscar-profissional';
 import { FiltrarBuscaPage } from '../pages/filtrar-busca/filtrar-busca';
-import { LoginPage } from '../pages/login/login';
 import { ClassificacaoPage } from '../pages/classificacao/classificacao';
 import { ServiOsPage } from '../pages/servi-os/servi-os';
 import { ContatosPage } from '../pages/contatos/contatos';
@@ -13,11 +12,7 @@ import { ContatoPage } from '../pages/contato/contato';
 import { AjudaPage } from '../pages/ajuda/ajuda';
 import { ConfiguracaoPage } from '../pages/configuracao/configuracao';
 import { SobrePage } from '../pages/sobre/sobre';
-
-
-
-import { HomePage } from '../pages/home/home';
-import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
+import { ProfessionalPage } from '../pages/professional/professional';
 
 @Component({
   templateUrl: 'app.html'
@@ -71,5 +66,9 @@ export class MyApp {
   goToSobre(params){
     if (!params) params = {};
     this.navCtrl.setRoot(SobrePage);
+  }
+  goToProfessional(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(ProfessionalPage);
   }
 }

@@ -18,7 +18,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class RegisterPage {
 
   createSuccess = false;
-  registerCredentials = { name: '', email: '', password: '', confirmation_password: '', lat: '', log: '', isProf: 'false', isUser: 'true' };
+  registerCredentials = { name: '', cpf: '', cnpj: '', genero: '', email: '', password: '', confirmation_password: '', phone: '', lat: '', log: '', function: '', location: 'false'};
 
   constructor(
     private nav: NavController,

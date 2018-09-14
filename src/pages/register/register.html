@@ -24,6 +24,18 @@
             </ion-item>
 
             <ion-item>
+              <ion-input type="text" placeholder="CPF" name="cpf" [(ngModel)]="registerCredentials.cpf" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Genero</ion-label>
+              <ion-select type="select" name="genero" [(ngModel)]="registerCredentials.genero" >
+                <ion-option value="feminino">Feminino</ion-option>
+                <ion-option value="masculino">Masculino</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
               <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
             </ion-item>
 
@@ -33,6 +45,14 @@
 
             <ion-item>
               <ion-input type="password" placeholder="Confirm Password" name="confirmation_password" [(ngModel)]="registerCredentials.confirmation_password" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Função</ion-label>
+              <ion-select type="select" name="function" [(ngModel)]="registerCredentials.function" >
+                <ion-option value="prof">Profissional</ion-option>
+                <ion-option value="user">Usuário</ion-option>
+              </ion-select>
             </ion-item>
 
           </ion-list>

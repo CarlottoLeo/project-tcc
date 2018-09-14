@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FiltrarBuscaPage } from '../filtrar-busca/filtrar-busca';
 import { IonicPage } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation';
 import { UserService } from './user.service';
 import leaflet from 'leaflet';
 
@@ -22,7 +21,7 @@ export class MapsPage {
   timeout: any;
 
 
-  constructor(private geolocation: Geolocation, public navCtrl: NavController, public UserService: UserService) {
+  constructor(public navCtrl: NavController, public UserService: UserService) {
 
   }
 
@@ -76,7 +75,6 @@ export class MapsPage {
 
   updateProfessionals() {
     var user = [];
-    var locations = [];
     var profIcon = leaflet.icon({
       iconUrl: '../assets/img/prof.png',
       iconSize: [38, 95],
@@ -88,10 +86,10 @@ export class MapsPage {
       user = dados;
       this.professionals.clearLayers();
       for (let i = 0; i < user.length; i++) {
-
-        let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
-        this.professionals.addLayer(markerProf)
-
+        if(user[i].function == 'prof'){
+          let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
+          this.professionals.addLayer(markerProf)
+        }
       }
 
       setTimeout( () => {
@@ -99,5 +97,5 @@ export class MapsPage {
       }, this.timeout);
     })
     console.log("running...");
-}
+  }
 }

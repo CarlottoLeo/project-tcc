@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
+// import { IonicPage, NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, Loading } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { HomePage } from '../home/home';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 
 @IonicPage()
@@ -17,7 +17,7 @@ export class LoginPage {
   constructor(
     public nav: NavController,
     private auth: AuthServiceProvider,
-    private alertCtrl: AlertController,
+    // private alertCtrl: AlertController,
     private loadingCtrl: LoadingController
   ) {}
 
@@ -30,7 +30,9 @@ export class LoginPage {
       this.nav.setRoot(TabsControllerPage);
     }else{
       this.showLoading()
+      console.log(this.registerCredentials)
       this.auth.login(this.registerCredentials).subscribe(allowed => {
+        console.log(allowed);
         if (allowed) {
           this.nav.setRoot(TabsControllerPage);
         } else {
@@ -54,11 +56,11 @@ export class LoginPage {
   showError(text) {
     this.loading.dismiss();
 
-    let alert = this.alertCtrl.create({
-      title: 'Fail',
-      subTitle: text,
-      buttons: ['OK']
-    });
+    // let alert = this.alertCtrl.create({
+    //   title: 'Fail',
+    //   subTitle: text,
+    //   buttons: ['OK']
+    // });
     //alert.present(prompt);
   }
 

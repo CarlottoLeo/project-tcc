@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Member Area
+      HOME
     </ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -16,11 +16,10 @@
 
 <ion-content padding id="page2">
   <ion-list>
-  <ion-list-header>
-    Users
-  </ion-list-header>
-  <ion-item *ngFor="let user of users">{{ user.name }}</ion-item>
-</ion-list>
+    <ion-list-header>
+      
+    </ion-list-header>
+  </ion-list>
 
   <div class="home-img">
     <a style="display:block;" on-click="goToMinhaConta()">
@@ -30,8 +29,14 @@
   <h1 id="home-heading8" style="color:#000000;text-align:center;" class="home-welcome">
     Bem-Vindo
   </h1>
-  <h3 id="home-heading9" style="color:#000000;font-weight:400;text-align:center;" class="home-name-user">
-    Fulano
+  <h3 id="home-heading9" style="color:#000000;font-weight:400;text-align:center;" class="home-name-user" *ngFor="let user of users">
+    {{ user.name }}
   </h3>
   <div class="spacer" style="width:300px;height:40px;" id="home-spacer13"></div>
+
+  <button ion-button full color="dark" icon-start on-click="goToProfessional()">
+    <ion-icon ios="ios-build" md="md-build"></ion-icon>
+    Modo Profissional
+  </button>
+
 </ion-content>

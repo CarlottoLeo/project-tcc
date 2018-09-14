@@ -1,22 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MinhaContaPage } from '../minha-conta/minha-conta';
-import { MapsPage } from '../buscar-profissional/buscar-profissional';
-import { FiltrarBuscaPage } from '../filtrar-busca/filtrar-busca';
-import { Usuario } from '../../models/usuario';
-import { Sesstion } from '../../providers/sesstion/sesstion';
-import { LoginPage } from '../login/login';
-import { ClassificacaoPage } from '../classificacao/classificacao';
-import { ServiOsPage } from '../servi-os/servi-os';
-import { ContatosPage } from '../contatos/contatos';
-import { ContatoPage } from '../contato/contato';
-import { AjudaPage } from '../ajuda/ajuda';
-import { ConfiguracaoPage } from '../configuracao/configuracao';
-import { SobrePage } from '../sobre/sobre';
-import { TabsControllerPage } from '../tabs-controller/tabs-controller';
+import { ProfessionalPage } from '../professional/professional';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
-import { Http, RequestOptions, Headers } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+//import { Http, RequestOptions, Headers } from '@angular/http';
+import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -25,24 +13,26 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
 
-  users;
+  users = [];
 
   constructor(private navCtrl: NavController, private auth: AuthServiceProvider, public http:Http) {
     this.getUsers();
   }
 
   public getUsers() {
-    let headers = new Headers(
-    {
-      'Authorization' : this.auth.getToken()
-    });
+    // let headers = new Headers(
+    // {
+    //   'Authorization' : this.auth.getToken()
+    // });
 
-    let options = new RequestOptions({ headers: headers });
+    //let options = new RequestOptions({ headers: headers });
     // Change to this http://ed43bb3b.ngrok.io/api/users
-    let url = 'http://localhost:3000/login';
-    this.http.get(url, options).map(res => res.json()).subscribe(
+    let url = 'http://localhost:3000/register';
+    var id = 1;
+    this.http.get(url+"/"+id).map(res => res.json()).subscribe(
       data => {
-        this.users = data.data;
+        this.users.push(data);
+        console.log(this.users);
       }
     );
   }
@@ -55,5 +45,9 @@ export class HomePage {
   goToMinhaConta(params){
     if (!params) params = {};
     this.navCtrl.setRoot(MinhaContaPage);
+  }
+  goToProfessional(params){
+    if (!params) params = {};
+    this.navCtrl.push(ProfessionalPage, {users: this.users});
   }
 }
