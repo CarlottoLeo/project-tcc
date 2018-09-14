@@ -12,35 +12,45 @@ Ionic pages and navigation.
 
 </ion-header>
 
-
 <ion-content padding>
+  <ion-list>
+    <ion-list-header>
+
+    </ion-list-header>
+  </ion-list>
+
   <div class="home-img">
-    <a style="display:block;" on-click="goToMinhaConta()">
+    <a style="display:block;">
       <img src="assets/img/D1T6E8oOTTaebpkwvQOE_avatar1.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" />
     </a>
   </div>
-  <form (ngSubmit)="update()" #updateForm="ngForm">
-    <div class="spacer" style="width:300px;height:10px;" id="prof-nome"></div>
 
-    <ion-item>
-      <ion-label>Profissão</ion-label>
-      <ion-select multiple="true" required>
-        <ion-option value="Eletricista">Eletricista</ion-option>
-        <ion-option value="Mecâcnico">Mecâcnico</ion-option>
-        <ion-option value="Encanador">Encanador</ion-option>
-        <ion-option value="Borracheiro">Borracheiro</ion-option>
-      </ion-select>
-    </ion-item>
+  <div class="spacer" style="width:300px;height:10px;" id="prof-nome"></div>
 
-    <ion-item>
-      <ion-input type="text" placeholder="CNPJ" name="cnpj" required></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-label>Profissão</ion-label>
+    <ion-select multiple="true" [(ngModel)]="profession" required>
+      <ion-option>Eletricista</ion-option>
+      <ion-option>Mecâcnico</ion-option>
+      <ion-option>Encanador</ion-option>
+      <ion-option>Borracheiro</ion-option>
+    </ion-select>
+  </ion-item>
 
-    <ion-row>
-      <ion-col class="formProf">
-        <button ion-button (on-click)="geoProf()" full>Iniciar</button>
-      </ion-col>
-    </ion-row>
-  </form>
+  <ion-item>
+    <ion-input type="text" placeholder="CNPJ" name="cnpj" [(ngModel)]="cnpj" required></ion-input>
+  </ion-item>
+
+  <ion-row>
+    <ion-col class="formProf">
+      <button ion-button (click)="geoProf()" full>Iniciar</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="formProf">
+      <button ion-button (click)="notGeoProf()" full color="dark">Encerrar</button>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

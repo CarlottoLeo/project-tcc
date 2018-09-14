@@ -23,7 +23,6 @@ export class AuthServiceProvider {
 
   // Login
   public login(credentials) {
-  console.log(credentials);
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials.");
     } else {
@@ -63,7 +62,6 @@ export class AuthServiceProvider {
         this.http.post(AuthServiceProvider.REGISTER_URL, credentials)
         .map(res => res.json())
         .subscribe( data => {
-          console.log(data);
         });
 
         observer.next(true);

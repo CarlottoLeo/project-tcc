@@ -60,7 +60,7 @@ export class MapsPage {
       });
       let marker: any = leaflet.marker([e.latitude, e.longitude], {icon: myIcon});
 
-      marker.bindPopup("<p>Tashi Delek.<p>Delhi</p>");
+      marker.bindPopup("<p>Procurando Ajuda?</p><p>Selecione um profissional mais procimo e entre em contato!</p>");
       leaflet.circle([e.latitude, e.longitude], {radius: 800}).addTo(this.map);
 
       markerGroup.addLayer(marker);
@@ -88,6 +88,7 @@ export class MapsPage {
       for (let i = 0; i < user.length; i++) {
         if(user[i].function == 'prof'){
           let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
+          markerProf.bindPopup("<p>Olá, sou o " + user[i].name + ".</p>" + "Se você precisa de um " + user[i].profession + ", clique no botão para entrar em contato.</p><br><button style='width: 100%; background-color: #4CAF50;     border: none;     color: white;     padding: 10px 10px;     text-align: center;     text-decoration: none;     display: inline-block;     font-size: 16px;     margin: 4px 2px;     cursor: pointer;' >Clique aqui para entrar em contato</button>")
           this.professionals.addLayer(markerProf)
         }
       }

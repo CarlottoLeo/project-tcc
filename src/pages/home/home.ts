@@ -32,14 +32,13 @@ export class HomePage {
     this.http.get(url+"/"+id).map(res => res.json()).subscribe(
       data => {
         this.users.push(data);
-        console.log(this.users);
       }
     );
   }
 
   public logout() {
     this.auth.logout().subscribe(succ => {
-      this.navCtrl.setRoot('LoginPage')
+      this.navCtrl.setRoot('LoginPage');
     });
   }
   goToMinhaConta(params){
