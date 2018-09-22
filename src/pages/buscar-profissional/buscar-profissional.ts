@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FiltrarBuscaPage } from '../filtrar-busca/filtrar-busca';
+import { ContatoPage } from '../contato/contato';
 import { IonicPage } from 'ionic-angular';
 import { UserService } from './user.service';
 import leaflet from 'leaflet';
@@ -25,10 +26,16 @@ export class MapsPage {
 
   }
 
+  goToContato(params){
+    if (!params) params = {};
+    this.navCtrl.push(ContatoPage);
+  }
+
   goToFiltrarBusca(params){
     if (!params) params = {};
     this.navCtrl.push(FiltrarBuscaPage);
   }
+
   public n: number = 1;
   ionViewDidLoad() {
     this.timeout = 1000 * 10//10 segundos
@@ -74,6 +81,7 @@ export class MapsPage {
   };
 
   updateProfessionals() {
+    //var buttonMaps = '<button class="buttonMaps" id="buttonMaps" on-click="goToContato()" >Clique aqui para entrar em contato</button>'
     var user = [];
     var profIcon = leaflet.icon({
       iconUrl: '../assets/img/prof.png',
@@ -82,13 +90,21 @@ export class MapsPage {
       popupAnchor: [-3, -76],
     });
 
+
     this.UserService.list().subscribe(dados => {
       user = dados;
       this.professionals.clearLayers();
       for (let i = 0; i < user.length; i++) {
+        let label = "Olá, sou o " + user[i].name + "." + "Se você precisa de um " + user[i].profession + ", clique aqui para entrar em contato!"
+        let button = document.createElement('button');
+        button.textContent = label;
+        button.className = "buttonMaps"
+        button.onclick = function(){
+          document.getElementById('fakeButton').click();
+        }
         if(user[i].function == 'prof'){
           let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
-          markerProf.bindPopup("<p>Olá, sou o " + user[i].name + ".</p>" + "Se você precisa de um " + user[i].profession + ", clique no botão para entrar em contato.</p><br><button style='width: 100%; background-color: #4CAF50;     border: none;     color: white;     padding: 10px 10px;     text-align: center;     text-decoration: none;     display: inline-block;     font-size: 16px;     margin: 4px 2px;     cursor: pointer;' >Clique aqui para entrar em contato</button>")
+          markerProf.bindPopup(button)
           this.professionals.addLayer(markerProf)
         }
       }

@@ -9,5 +9,5 @@ export class ContatoPage {
 
   constructor(public navCtrl: NavController) {
   }
-  
+
 }
