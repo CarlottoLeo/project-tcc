@@ -14,5 +14,7 @@
     <ion-icon name="funnel"></ion-icon>
     Filtrar Busca
   </button>
-  <button id="fakeButton" hidden ion-button color="positive" block icon-left class="button-filter" on-click="goToContato()"></button>
+
+  <button hidden *ngFor="let itemParams of userParams" id="userId{{itemParams.id}}" ion-button color="positive" block icon-left class="button-filter" on-click="goToContato(itemParams)"></button>
+
 </ion-content>

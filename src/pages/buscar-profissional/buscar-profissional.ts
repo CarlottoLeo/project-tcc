@@ -20,15 +20,25 @@ export class MapsPage {
   professionals: any;
   markers : any;
   timeout: any;
-
+  paramContato: any;
+  user: any;
+  userParams: any;
 
   constructor(public navCtrl: NavController, public UserService: UserService) {
-
+    this.userParams = new Array<any>();
+    this.UserService.list().subscribe(dados => {
+      this.user = dados;
+      this.professionals.clearLayers();
+      for (let i = 0; i < this.user.length; i++) {
+        this.userParams.push(this.user[i])
+      }
+    });
   }
 
   goToContato(params){
+    console.log(params)
     if (!params) params = {};
-    this.navCtrl.push(ContatoPage);
+    this.navCtrl.push(ContatoPage, {params});
   }
 
   goToFiltrarBusca(params){
@@ -81,6 +91,7 @@ export class MapsPage {
   };
 
   updateProfessionals() {
+    var id;
     //var buttonMaps = '<button class="buttonMaps" id="buttonMaps" on-click="goToContato()" >Clique aqui para entrar em contato</button>'
     var user = [];
     var profIcon = leaflet.icon({
@@ -98,9 +109,11 @@ export class MapsPage {
         let label = "Olá, sou o " + user[i].name + "." + "Se você precisa de um " + user[i].profession + ", clique aqui para entrar em contato!"
         let button = document.createElement('button');
         button.textContent = label;
-        button.className = "buttonMaps"
+        button.className = "buttonMaps";
+        button.id = user[i].id;
         button.onclick = function(){
-          document.getElementById('fakeButton').click();
+          id = this.id
+          document.getElementById('userId' + id).click()
         }
         if(user[i].function == 'prof'){
           let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
