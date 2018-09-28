@@ -27,18 +27,22 @@
       <!-- <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
       <img src="assets/img/6TW364TFSr2UBmPcEybT_avatar1.png" />
     </div> -->
-    <ion-item color="none" href="tel:9 9999-9999" id="contato-list-item42" class="contact-phone" style="background-color: #00000000">
-      <ion-icon name="phone-portrait" item-left></ion-icon>
-      {{paramsUser.phone}}
-    </ion-item>
+    <a href="tel:{{paramsUser.phone}}" style="text-decoration:none" type="button">
+      <ion-item color="none" id="contato-list-item42" class="contact-phone" style="background-color: #00000000">
+        <ion-icon name="phone-portrait" item-left></ion-icon>
+        {{paramsUser.phone}}
+      </ion-item>
+    </a>
     <!-- <ion-item color="none" href="tel:9 9999-9999" id="contato-list-item43" class="contact-phone">
     <ion-icon name="whatsapp" item-left></ion-icon>
     {{paramsUser.phone}}
   </ion-item> -->
-  <ion-item color="none" href="mailto:fulano@gmail.com" id="contato-list-item44" class="contact-email" style="background-color: #00000000">
-    <ion-icon name="mail" item-left></ion-icon>
-    {{paramsUser.email}}
-  </ion-item>
+  <a href="mailto:{{paramsUser.email}}" style="text-decoration:none" type="button">
+    <ion-item color="none" id="contato-list-item44" class="contact-email" style="background-color: #00000000">
+      <ion-icon name="mail" item-left></ion-icon>
+      {{paramsUser.email}}
+    </ion-item>
+  </a>
   <h3 id="contato-heading5" style="color:#000000;font-weight:400;">
   </h3>
   <div id="contato-markdown6" class="show-list-numbers-and-dots contact-text">
