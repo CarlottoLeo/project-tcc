@@ -71,7 +71,7 @@ export class MapsPage {
 
       var myIcon = leaflet.icon({
         iconUrl: '../assets/img/eu.png',
-        iconSize: [38, 95],
+        iconSize: [28, 85],
         iconAnchor: [22, 94],
         popupAnchor: [-3, -76],
       });
@@ -92,11 +92,10 @@ export class MapsPage {
 
   updateProfessionals() {
     var id;
-    //var buttonMaps = '<button class="buttonMaps" id="buttonMaps" on-click="goToContato()" >Clique aqui para entrar em contato</button>'
     var user = [];
     var profIcon = leaflet.icon({
       iconUrl: '../assets/img/prof.png',
-      iconSize: [38, 95],
+      iconSize: [28, 85],
       iconAnchor: [22, 94],
       popupAnchor: [-3, -76],
     });
