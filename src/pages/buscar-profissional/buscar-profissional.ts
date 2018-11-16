@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FiltrarBuscaPage } from '../filtrar-busca/filtrar-busca';
 import { ContatoPage } from '../contato/contato';
 import { IonicPage } from 'ionic-angular';
@@ -23,8 +23,21 @@ export class MapsPage {
   paramContato: any;
   user: any;
   userParams: any;
+  filter: any;
+  radius: any;
+  filterProf: any;
 
-  constructor(public navCtrl: NavController, public UserService: UserService) {
+  constructor(public navCtrl: NavController, public UserService: UserService, public navParams: NavParams) {
+    this.filter = this.navParams.get('params');
+      console.log("params", this.filter);
+    if(this.filter){
+      this.radius = (this.filter[0] - this.filter[0]/2);
+      this.filterProf = this.filter[1];
+      console.log("radius", this.radius);
+      console.log("this.filterProf", this.filterProf);
+    }else{
+        this.radius = 800;
+    }
     this.userParams = new Array<any>();
     this.UserService.list().subscribe(dados => {
       this.user = dados;
@@ -78,7 +91,7 @@ export class MapsPage {
       let marker: any = leaflet.marker([e.latitude, e.longitude], {icon: myIcon});
 
       marker.bindPopup("<p>Procurando Ajuda?</p><p>Selecione um profissional mais procimo e entre em contato!</p>");
-      leaflet.circle([e.latitude, e.longitude], {radius: 800}).addTo(this.map);
+      leaflet.circle([e.latitude, e.longitude], {radius: this.radius}).addTo(this.map);
 
       markerGroup.addLayer(marker);
       this.map.addLayer(markerGroup);
@@ -105,7 +118,7 @@ export class MapsPage {
       user = dados;
       this.professionals.clearLayers();
       for (let i = 0; i < user.length; i++) {
-        let label = "Olá, sou o " + user[i].name + "." + "Se você precisa de um " + user[i].profession + ", clique aqui para entrar em contato!"
+        let label = "Olá, sou o " + user[i].name + "." + " Se você precisa de um " + user[i].profession + ", clique aqui para entrar em contato!"
         let button = document.createElement('button');
         button.textContent = label;
         button.className = "buttonMaps";
@@ -115,9 +128,17 @@ export class MapsPage {
           document.getElementById('userId' + id).click()
         }
         if(user[i].function == 'prof'){
-          let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
-          markerProf.bindPopup(button)
-          this.professionals.addLayer(markerProf)
+          if(this.filterProf){
+            if(this.filterProf == user[i].profession){
+              let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
+              markerProf.bindPopup(button)
+              this.professionals.addLayer(markerProf)
+            }
+          }else{
+            let markerProf: any = leaflet.marker([user[i].lat, user[i].log], {icon: profIcon})
+            markerProf.bindPopup(button)
+            this.professionals.addLayer(markerProf)
+          }
         }
       }
 

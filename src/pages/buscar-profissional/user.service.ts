@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class UserService {
 
-  url='https://my-json-server.typicode.com/CarlottoLeo/json-serve/register'
+  url='http://localhost:3000/register'
 
   constructor(private http: Http) {
   }

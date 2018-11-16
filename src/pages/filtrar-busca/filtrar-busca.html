@@ -10,11 +10,11 @@
 </ion-header>
 <ion-content padding id="page14">
   <form id="filtrarBusca-form2">
+    <span>Distância: {{km == null? 800 : km}} m</span>
     <ion-item id="filtrarBusca-range2" class="filter-range">
-      <ion-range min="0" max="20000" step="100" color="dark" value="100" name="range">
-        <ion-label range-left>
-          Distância
-        </ion-label>
+      <ion-range [(ngModel)]="km" [min]=800 [max]=10000 step="10" min="0" max="10000" color="primary" value="10" name="range">
+        <ion-label range-right>10000 m</ion-label>
+        <ion-label range-left>800 m</ion-label>
       </ion-range>
     </ion-item>
     <div class="spacer" style="width:300px;height:20px;" id="filtrarBusca-spacer2"></div>
@@ -22,50 +22,17 @@
       <ion-label>
         Selecionar Profissional
       </ion-label>
-      <ion-select name="select">
-        <ion-option>
-          Encanador
-        </ion-option>
-        <ion-option>
-          Eletricista
-        </ion-option>
-        <ion-option>
-          Borracheiro
-        </ion-option>
-        <ion-option>
-          Pedreiro
-        </ion-option>
-        <ion-option>
-          Desentupidor
-        </ion-option>
-        <ion-option>
-          Mecânico
-        </ion-option>
+      <ion-select name="select" [(ngModel)]="select">
+        <ion-option>Encanador</ion-option>
+        <ion-option>Eletricista</ion-option>
+        <ion-option>Mecânico</ion-option>
+        <ion-option>Doméstica</ion-option>
+        <ion-option>Borracheiro</ion-option>
       </ion-select>
     </ion-item>
     <div class="spacer" style="width:300px;height:20px;" id="filtrarBusca-spacer3"></div>
-    <ion-item id="filtrarBusca-checkbox8">
-      <ion-label>
-        Checkbox
-      </ion-label>
-      <ion-checkbox></ion-checkbox>
-    </ion-item>
-    <div class="spacer" style="width:300px;height:20px;" id="filtrarBusca-spacer39"></div>
-    <ion-item id="filtrarBusca-toggle11">
-      <ion-label>
-        Toggle
-      </ion-label>
-      <ion-toggle color="positive" checked="false"></ion-toggle>
-    </ion-item>
-    <div class="spacer" style="width:300px;height:20px;" id="filtrarBusca-spacer40"></div>
-    <ion-item id="filtrarBusca-toggle12">
-      <ion-label>
-        Toggle
-      </ion-label>
-      <ion-toggle color="positive" checked="false"></ion-toggle>
-    </ion-item>
   </form>
-  <button id="filtrarBusca-button7" ion-button color="positive" block>
+  <button on-click="goToBuscarProfissional()" id="filtrarBusca-button7" ion-button color="positive" block>
     Filtrar
   </button>
 </ion-content>

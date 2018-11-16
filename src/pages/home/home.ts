@@ -6,6 +6,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 //import { Http, RequestOptions, Headers } from '@angular/http';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -15,8 +16,17 @@ export class HomePage {
 
   users = [];
 
-  constructor(private navCtrl: NavController, private auth: AuthServiceProvider, public http:Http) {
+  constructor(private navCtrl: NavController, private auth: AuthServiceProvider, public http:Http, public alertCtrl: AlertController) {
     this.getUsers();
+  }
+
+  doPrompt() {
+    const alert = this.alertCtrl.create({
+        title: 'New Friend!',
+        subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+        buttons: ['OK']
+      });
+      alert.present();
   }
 
   public getUsers() {
@@ -27,7 +37,7 @@ export class HomePage {
 
     //let options = new RequestOptions({ headers: headers });
     // Change to this http://ed43bb3b.ngrok.io/api/users
-    let url = 'https://my-json-server.typicode.com/CarlottoLeo/json-serve/register';
+    let url = 'http://localhost:3000/register';
     var id = 1;
     this.http.get(url+"/"+id).map(res => res.json()).subscribe(
       data => {

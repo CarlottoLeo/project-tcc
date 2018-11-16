@@ -23,6 +23,12 @@ export class ProfessionalPage {
   }
 
   ionViewDidLoad() {
+    this.geo.getCurrentPosition().then(res => {
+      this.lat = '' + parseFloat(res.coords.latitude.toFixed(6));
+      this.log = '' + parseFloat(res.coords.longitude.toFixed(6));
+    }).catch(() => {
+      alert("erro ao pegar geolocalizacao ");
+    })
   }
 
   private geoProf(){
@@ -32,8 +38,13 @@ export class ProfessionalPage {
     }).catch(() => {
       alert("erro ao pegar geolocalizacao ");
     })
-    this.valid = false;
-    this.update(false);
+    if(this.lat == "undefined" || this.log == "undefined" ){
+      this.geoProf();
+    }else{
+      this.valid = false;
+      this.update(false);
+    }
+
   }
 
   update(variavel){
@@ -44,6 +55,8 @@ export class ProfessionalPage {
     this.user[0].log = this.log;
     this.user[0].cnpj = this.cnpj;
     this.user[0].profession = this.profession;
+    console.log("  this.lat ", this.lat)
+    console.log("  this.log ", this.log)
     this.UserService.update(this.user[0]).subscribe(item => { })
     if(variavel){
       this.user[0].lat = '';
@@ -57,7 +70,7 @@ export class ProfessionalPage {
         }else{
           return 0;
         }
-      }, 1000 * 10);
+      }, 100 * 10);
     }
   }
 

@@ -26,6 +26,7 @@ import { UserService } from '../pages/buscar-profissional/user.service';
 import { DetalhesPage } from '../pages/detalhes/detalhes';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProfessionalPage } from '../pages/professional/professional';
+import { AppRate } from '@ionic-native/app-rate';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ProfessionalPage } from '../pages/professional/professional';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     UserService,
+    AppRate,
     AuthServiceProvider
   ]
 })

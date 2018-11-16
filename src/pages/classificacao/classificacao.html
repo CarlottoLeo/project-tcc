@@ -15,17 +15,39 @@
         <ion-avatar item-left>
           <img src="assets/img/M6QbN9QgQ7O842L0jMza_avatar1.png" />
         </ion-avatar>
-        <h2>
-          Profissional
+        <h2 style="margin-top: 1px;">
+          Carlotto
         </h2>
+        <h4>
+          Eletricista
+        </h4>
       </ion-item>
-      <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
-        <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>
+      <div class="stars">
+          <label class = "item item-radio" style="    margin-left: 17px">
+              <ion-icon type="radio" (click)="addEvent(1);" [ngStyle]="{'color': buttonColor1}" name="star"></ion-icon>
+              <ion-icon type="radio" (click)="addEvent(2);" [ngStyle]="{'color': buttonColor2}" name="star"></ion-icon>
+              <ion-icon type="radio" (click)="addEvent(3);" [ngStyle]="{'color': buttonColor3}" name="star"></ion-icon>
+              <ion-icon type="radio" (click)="addEvent(4);" [ngStyle]="{'color': buttonColor4}" name="star"></ion-icon>
+              <ion-icon type="radio" (click)="addEvent(5);" [ngStyle]="{'color': buttonColor5}" name="star"></ion-icon>
+          </label>
       </div>
       <form id="classificacao-form15">
+        <h2 style="margin-top: 10px; margin-left: 15px;">Comentário</h2>
         <ion-item id="classificacao-textarea4" class="ranking-coments">
           <ion-label>
-            Comentário:
+            Título:
+          </ion-label>
+          <ion-textarea placeholder=""></ion-textarea>
+        </ion-item>
+        <ion-item id="classificacao-textarea4" class="ranking-coments">
+          <ion-label>
+            Positivo:
+          </ion-label>
+          <ion-textarea placeholder=""></ion-textarea>
+        </ion-item>
+        <ion-item id="classificacao-textarea4" class="ranking-coments">
+          <ion-label>
+            Negativo:
           </ion-label>
           <ion-textarea placeholder=""></ion-textarea>
         </ion-item>
