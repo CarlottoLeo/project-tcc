@@ -27,6 +27,14 @@
       <!-- <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
       <img src="assets/img/6TW364TFSr2UBmPcEybT_avatar1.png" />
     </div> -->
+
+    <a *ngIf="paramsUser.whats" href="https://wa.me/55{{paramsUser.whats}}?text=Ol%C3%A1%2C+poderia+me+ajudar%3F" style="text-decoration:none" type="button">
+      <ion-item color="none" id="contato-list-item42" class="contact-phone" style="background-color: #00000000">
+        <ion-icon name="logo-whatsapp" item-left></ion-icon>
+        {{paramsUser.phone}}
+      </ion-item>
+    </a>
+
     <a href="tel:{{paramsUser.phone}}" style="text-decoration:none" type="button">
       <ion-item color="none" id="contato-list-item42" class="contact-phone" style="background-color: #00000000">
         <ion-icon name="phone-portrait" item-left></ion-icon>

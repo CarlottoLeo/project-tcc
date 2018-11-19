@@ -14,9 +14,9 @@ export class AuthServiceProvider {
 
   // Change to this http://ed43bb3b.ngrok.io/api/login
   //static readonly LOGIN_URL = 'https://my-json-server.typicode.com/CarlottoLeo/json-serve/login';
-  static readonly LOGIN_URL = 'http://localhost:3000/login'
+  static readonly LOGIN_URL = 'https://my-json-server.typicode.com/CarlottoLeo/json-serve/login'
   // Change to this http://ed43bb3b.ngrok.io/api/register
-  static readonly REGISTER_URL = 'http://localhost:3000/register';
+  static readonly REGISTER_URL = 'https://my-json-server.typicode.com/CarlottoLeo/json-serve/register';
   access: boolean;
   token: string;
 

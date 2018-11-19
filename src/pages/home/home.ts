@@ -37,7 +37,7 @@ export class HomePage {
 
     //let options = new RequestOptions({ headers: headers });
     // Change to this http://ed43bb3b.ngrok.io/api/users
-    let url = 'http://localhost:3000/register';
+    let url = 'https://my-json-server.typicode.com/CarlottoLeo/json-serve/register';
     var id = 1;
     this.http.get(url+"/"+id).map(res => res.json()).subscribe(
       data => {
